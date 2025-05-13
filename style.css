@@ -24,4 +24,5 @@ p.time {
 
 .external-link {
   color: SeaGreen;
+  text-decoration: none;
 }
