@@ -1,0 +1,45 @@
+/* Header */
+
+header {
+  background-image: url("images/header.jpg");
+}
+
+header h1 {
+  font-family: Helvetica;
+  font-size: 100px;
+  font-weight: bold;
+  color: khaki;
+  text-align: center;
+}
+
+/* Main */
+
+main h1 {
+  font-family: Helvetica;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+}
+
+.bHeader {
+  background-color: mediumspringgreen;
+}
+
+.fHeader {
+  background-color: lightcoral;
+}
+
+.pHeader {
+  background-color: skyblue;
+}
+
+section p {
+    font-family: helvetica;
+    font-size: 18px;
+}
+
+section span {
+  font-family: Helvetica;
+  font-weight: bold;
+  color: blue;
+}
