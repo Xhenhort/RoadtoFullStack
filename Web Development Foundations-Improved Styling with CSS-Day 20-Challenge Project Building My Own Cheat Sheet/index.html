@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>My Cheat Sheet</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>My Cheat Sheet</h1>
+        <ul>
+          <li><a>HTML</a></li>
+          <li><a>CSS</a></li>
+          <li><a>JavaScript</a></li>
+        </ul>
+      </nav>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Property</th>
+          <th scope="col">Overview</th>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody class="dark">
+        <tr>
+          <th scope="row" rowspan="6"><span>font-family</span></th>
+          <td rowspan="6">It decides the font</td>
+          <td>Georgia</td>
+          <td>
+            Makes the font like this:
+            <pre class="Georgia">
+The quick brown fox jumps over the lazy dog.
+This is a sample text crafted to display font characteristics clearly.
+0123456789
+.,;:'"?!-_()[]{}+=*/\#&©®™</pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>serif</td>
+          <td>
+            Makes the font like this
+            <pre class="serif">
+The quick brown fox jumps over the lazy dog.
+This is a sample text crafted to display font characteristics clearly.
+0123456789
+.,;:'"?!-_()[]{}+=*/\#&©®™</pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>sans-serif</td>
+          <td>
+            Makes the font like this
+            <pre class="sans-serif">
+The quick brown fox jumps over the lazy dog.
+This is a sample text crafted to display font characteristics clearly.
+0123456789
+.,;:'"?!-_()[]{}+=*/\#&©®™</pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>monospace</td>
+          <td>
+            Makes the font like this
+            <pre class="monospace">
+The quick brown fox jumps over the lazy dog.
+This is a sample text crafted to display font characteristics clearly.
+0123456789
+.,;:'"?!-_()[]{}+=*/\#&©®™</pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>Helvetica</td>
+          <td>
+            Makes the font like this
+            <pre class="Helvetica">
+The quick brown fox jumps over the lazy dog.
+This is a sample text crafted to display font characteristics clearly.
+0123456789
+.,;:'"?!-_()[]{}+=*/\#&©®™</pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>Caveat</td>
+          <td>
+            Makes the font like this
+            <pre>
+The quick brown fox jumps over the lazy dog.
+This is a sample text crafted to display font characteristics clearly.
+0123456789
+.,;:'"?!-_()[]{}+=*/\#&©®™</pre
+            >
+          </td>
+        </tr>
+      </tbody>
+      <tbody class="light">
+        <tr>
+          <th scope="row" rowspan="2"><span>box-sizing</span></th>
+          <td rowspan="2">
+            Defines how an element's total width and height are calculated
+          </td>
+          <td>content-box</td>
+          <td>
+            The width and height properties include the content, but does not
+            include the padding, border, or margin.
+          </td>
+        </tr>
+        <tr>
+          <td>border-box</td>
+          <td>
+            The width and height properties include the content, padding, and
+            border, but do not include the margin
+          </td>
+        </tr>
+      </tbody>
+      <tbody class="dark">
+        <tr>
+          <th scope="row" rowspan="4"><span>color</span></th>
+          <td rowspan="4">Determine the color of the text</td>
+          <td>
+            <a
+              href="https://www.w3schools.com/cssref/css_colors.php"
+              target="_blanck"
+              >CSS named colors</a
+            >
+          </td>
+          <td>
+            Applies colors based on the predetermined color name system built
+            into CSS.
+          </td>
+        </tr>
+        <tr>
+          <td>Hexadecimal Colors</td>
+          <td>
+            A hexadecimal color is specified with: #RRGGBB, where the RR (red),
+            GG (green) and BB (blue) hexadecimal integers specify the components
+            of the color. All values must be between 00 and FF.
+          </td>
+        </tr>
+        <tr>
+          <td>rgba(red, green, blue, alpha)</td>
+          <td>
+            Each parameter (red, green, blue, alpha) defines the intensity of
+            the color and can be an integer between 0 and 255, except alpha
+            which accepts numbers from 0 to 1, or a percentage value (from 0% to
+            100%)with an alpha channel - which specifies the opacity of the
+            object.
+          </td>
+        </tr>
+        <tr>
+          <td>hsla(hue, saturation, lightness, alpha)</td>
+          <td>
+            HSL stands for hue, saturation, and lightness - and represents a
+            cylindrical-coordinate representation of colors. Alpha functions the
+            as same as the alpha in rgpa.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
