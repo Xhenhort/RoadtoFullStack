@@ -1,0 +1,76 @@
+a {
+  color: #2176FF;
+}
+
+a:hover {
+  color: orange;
+}
+
+.nav-link {
+  box-sizing: content-box;
+  transition: 0.5s ease;
+}
+
+.nav-link:hover {
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 20px;
+  transition: 0.5s ease;
+}
+
+.nav-link:active {
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  font-size: 20px;
+  transition: 0.1s;
+}
+
+.btn {
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 20px;
+  border: 5px solid #2176FF;
+  box-shadow: 0px 2px;
+  transition: 0.5s ease;
+}
+
+.btn:hover {
+  background-color: #2176FF;
+  color: white;
+  transition: 0.5s ease;
+  box-shadow: none;
+}
+
+.btn:active {
+  display: block;
+  margin-top: 0.1px;
+  transition: 0.1s ;
+}
+
+.activity {
+  box-sizing: content-box;
+  box-shadow: 1px 1px 5px black;
+  transition: 0.5s ease;
+}
+
+.activity:hover {
+  box-sizing: content-box;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 70px;
+  padding: 40px;
+  transition: 0.5s ease;
+}
+
+.activity:active {
+  box-sizing: content-box;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-size: 60px;
+  padding: 20px;
+  transition: 0.1s linear;
+}
