@@ -1,0 +1,194 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Colors */
+
+section {
+  margin: 20px 0px;
+}
+
+.containerC {
+  padding: 20px;
+  transition: 0.5s ease;
+}
+
+.containerC:hover {
+  padding: 100px;
+  transition: 0.5s ease;
+}
+
+.containerC h3 {
+  font-size: 44px;
+  margin-bottom: 50px;
+}
+
+.containerC p {
+  padding: 10px;
+}
+
+.blue {
+  color: white;
+  background-color: rgb(65, 105, 225);
+}
+
+.red {
+  color: white;
+  background-color: rgb(255, 0, 0);
+}
+
+.violet {
+  color: white;
+  background-color: rgb(127, 0, 255);
+}
+
+/* Fonts */
+
+.sectionF {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 20px;
+  font-size: 24px;
+  transition: 0.5s ease;
+}
+
+.sectionF:has(.caveat:hover) {
+  grid-template-columns: 2fr 1fr 1fr;
+  transition: 0.5s ease;
+}
+
+.sectionF:has(.poiretOne:hover) {
+  grid-template-columns: 1fr 2fr 1fr;
+  transition: 0.5s ease;
+}
+
+.sectionF:has(.eagleLake:hover) {
+  grid-template-columns: 1fr 1fr 2fr;
+  transition: 0.5s ease;
+}
+
+.caveat {
+  font-family: "Caveat";
+  transition: 0.5s ease;
+}
+
+.caveat:hover {
+  font-size: 44px;
+  transition: 0.5s ease;
+}
+
+.poiretOne {
+  font-family: "Poiret One";
+  transition: 0.5s ease;
+}
+
+.poiretOne:hover {
+  font-size: 44px;
+  transition: 0.5s ease;
+}
+
+.eagleLake {
+  font-family: "Eagle Lake";
+  transition: 0.5s ease;
+}
+
+.eagleLake:hover {
+  font-size: 44px;
+  transition: 0.5s ease;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* text Styles */
+
+.sectionT {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 20px;
+  font-size: 24px;
+  transition: 0.5s ease;
+}
+
+.sectionT:has(.headingD:hover) {
+  background-color: violet;
+  transition: 0.5s ease;
+}
+
+.sectionT:has(.subheadingD:hover) {
+  background-color: red;
+  transition: 0.5s ease;
+}
+
+.sectionT:has(.textD:hover) {
+  background-color: blue;
+  transition: 0.5s ease;
+}
+
+.headingD {
+  transition: 0.5s ease;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.headingD:hover {
+  color: white;
+  transition: 0.5s ease;
+}
+
+.subheadingD {
+  transition: 0.5s ease;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.subheadingD:hover {
+  color: white;
+  transition: 0.5s ease;
+}
+
+.textD {
+  transition: 0.5s ease;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.textD:hover {
+  color: white;
+  transition: 0.5s ease;
+}
+
+.heading {
+  font-family: "Eagle Lake";
+  font-size: 44px;
+  font-weight: bold;
+  transition: 0.5s ease;
+}
+
+.subheading {
+  font-family: "Poiret One";
+  font-size: 24px;
+  font-weight: normal;
+  transition: 0.5s ease;
+}
+
+.text {
+  font-family: "Caveat";
+  font-size: 18px;
+  font-weight: normal;
+  transition: 0.5s ease;
+}
