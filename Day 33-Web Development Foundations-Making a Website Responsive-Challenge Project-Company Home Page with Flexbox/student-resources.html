@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internal Medicine Club – Students Resources</title>
+
+  <!-- Load D3.js v6 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
+
+  <!-- Inlined CSS -->
+  <style>
+    /* 1. Make html/body fill the viewport */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif; /* Fallback to sans-serif if Open Sans is not available */
+      background-color: #FAFAFA;
+    }
+
+    /* 2. Title styling */
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-family: 'Montserrat', sans-serif; /* Fallback to sans-serif if Montserrat is not available */
+      color: #006D77;
+    }
+
+    /* 3. Container for the tree */
+    #tree-container {
+      width: 100%;
+      height: calc(100% - 80px); /* reserve space for title */
+      overflow: auto; /* Makes the container scrollable if SVG content overflows */
+    }
+
+    /* 4. Links (branches) */
+    .link {
+      fill: none;
+      stroke: #999;
+      stroke-width: 2px;
+    }
+
+    /* 5. Decision nodes (yellow rectangles) */
+    .node--decision rect {
+      fill: #FFF3B0;
+      stroke: #666;
+      stroke-width: 1.5px;
+      cursor: pointer;
+    }
+    .node--decision text {
+      font-size: 14px;
+      fill: #333;
+      pointer-events: none; /* Text itself should not capture click events */
+    }
+
+    /* 6. Leaf nodes (green rectangles) */
+    .node--leaf rect {
+      fill: #D0F0C0;
+      stroke: #666;
+      stroke-width: 1.5px;
+      cursor: pointer;
+    }
+    .node--leaf text {
+      font-size: 14px;
+      fill: #333;
+      pointer-events: none; /* Text itself should not capture click events */
+    }
+
+    /* 7. Hover effect on any rectangle */
+    rect:hover {
+      stroke: #006D77;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Internal Medicine Resources  –  Decision Tree</h1>
+  <div id="tree-container"></div>
+
+  <!-- Inline JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 4.1 – MOCK DATA
+      const treeData = {
+        name: "Resources",
+        children: [
+          {
+            name: "Physical Exam Summaries",
+            children: [
+              { name: "Cardiovascular Exam", link: "https://example.com/physical-exam/cardio-summary.pdf" },
+              { name: "Respiratory Exam",   link: "https://example.com/physical-exam/resp-summary.pdf" },
+              { name: "Abdominal Exam",     link: "https://example.com/physical-exam/abd-summary.pdf" },
+              { name: "Neurological Exam",  link: "https://example.com/physical-exam/neuro-summary.pdf" }
+            ]
+          },
+          {
+            name: "MED1 Resources",
+            children: [
+              {
+                name: "Cardiovascular",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Cardio-Videos" },
+                  { name: "Articles", link: "https://medscape.com/resource/med1-cardio-overview" },
+                  { name: "Books",    link: "https://books.google.com/med1-cardio-chapter" }
+                ]
+              },
+              {
+                name: "Respiratory",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Resp-Videos" },
+                  { name: "Articles", link: "https://nejm.org/respiratory-review-2024" },
+                  { name: "Books",    link: "https://books.google.com/med1-resp-textbook" }
+                ]
+              },
+              {
+                name: "Renal",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Renal-Videos" },
+                  { name: "Articles", link: "https://uptodate.com/renal-pathophysiology" },
+                  { name: "Books",    link: "https://books.google.com/med1-renal-chapter" }
+                ]
+              },
+              {
+                name: "Endocrine",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Endocrine-Videos" },
+                  { name: "Articles", link: "https://nejm.org/endocrine-overview-2024" },
+                  { name: "Books",    link: "https://books.google.com/med1-endocrine-text" }
+                ]
+              }
+            ]
+          },
+          {
+            name: "OSCE Resources",
+            children: [
+              {
+                name: "Cardiovascular",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Cardio-Videos" },
+                  { name: "Articles", link: "https://medscape.com/resource/med1-cardio-overview" },
+                  { name: "Books",    link: "https://books.google.com/med1-cardio-chapter" }
+                ]
+              },
+              {
+                name: "Respiratory",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Resp-Videos" },
+                  { name: "Articles", link: "https://nejm.org/respiratory-review-2024" },
+                  { name: "Books",    link: "https://books.google.com/med1-resp-textbook" }
+                ]
+              },
+              {
+                name: "Renal",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Renal-Videos" },
+                  { name: "Articles", link: "https://uptodate.com/renal-pathophysiology" },
+                  { name: "Books",    link: "https://books.google.com/med1-renal-chapter" }
+                ]
+              },
+              {
+                name: "Endocrine",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Endocrine-Videos" },
+                  { name: "Articles", link: "https://nejm.org/endocrine-overview-2024" },
+                  { name: "Books",    link: "https://books.google.com/med1-endocrine-text" }
+                ]
+              },
+              {
+                name: "Pulomonary",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED1-Endocrine-Videos" },
+                  { name: "Articles", link: "https://nejm.org/endocrine-overview-2024" },
+                  { name: "Books",    link: "https://books.google.com/med1-endocrine-text" }
+                ]
+              }
+            ]
+          },
+          {
+            name: "MED2 Resources",
+            children: [
+              {
+                name: "Gastrointestinal",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED2-GI-Videos" },
+                  { name: "Articles", link: "https://thelancet.com/gi-guidelines-2023" },
+                  { name: "Books",    link: "https://books.google.com/med2-gi-chapter" }
+                ]
+              },
+              {
+                name: "Hematology",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED2-Heme-Videos" },
+                  { name: "Articles", link: "https://bloodjournal.org/heme-review-2024" },
+                  { name: "Books",    link: "https://books.google.com/med2-heme-textbook" }
+                ]
+              },
+              {
+                name: "Cardiology",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED2-Cardio-Videos" },
+                  { name: "Articles", link: "https://nejm.org/cardiology-review-2024" },
+                  { name: "Books",    link: "https://books.google.com/med2-cardio-chapter" }
+                ]
+              },
+              {
+                name: "Neurology",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED2-Neuro-Videos" },
+                  { name: "Articles", link: "https://jamanetwork.com/neuro-review-2024" },
+                  { name: "Books",    link: "https://books.google.com/med2-neuro-text" }
+                ]
+              },
+              {
+                name: "Orthopedics",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED2-Neuro-Videos" },
+                  { name: "Articles", link: "https://jamanetwork.com/neuro-review-2024" },
+                  { name: "Books",    link: "https://books.google.com/med2-neuro-text" }
+                ]
+              },
+              {
+                name: "Infectious Diseases",
+                children: [
+                  { name: "Videos",   link: "https://youtube.com/playlist?list=MED2-ID-Videos" },
+                  { name: "Articles", link: "https://thelancet.com/id-guidelines-2024" },
+                  { name: "Books",    link: "https://books.google.com/med2-id-chapter" }
+                ]
+              }
+            ]
+          }
+        ]
+      };
+
+      // 4.2 – SET UP DIMENSIONS
+      const margin = { top: 20, right: 120, bottom: 20, left: 120 };
+      const container = document.getElementById("tree-container");
+      const containerWidth  = container.clientWidth;
+      const containerHeight = container.clientHeight;
+      
+      const height = containerHeight - margin.top  - margin.bottom;
+      const width  = containerWidth  - margin.left - margin.right; 
+
+      // 4.3 – APPEND SVG
+      const svg = d3.select("#tree-container")
+        .append("svg")
+        .attr("width",  containerWidth)
+        .attr("height", containerHeight)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // 4.4 – CREATE TREE LAYOUT
+      const treemap = d3.tree().size([height, width]);
+
+      // 4.5 – CONVERT DATA TO HIERARCHY & COLLAPSE
+      let root = d3.hierarchy(treeData, d => d.children);
+      root.x0 = height / 2;
+      root.y0 = 0;
+      
+      if (root.children) {
+        root.children.forEach(collapse);
+      }
+
+      // Node ID counter
+      let i = 0; 
+
+      // INITIAL DRAW
+      update(root);
+
+      // ==============================================
+      // 5. FUNCTIONS: update(), collapse(), click(), etc.
+      // ==============================================
+      function update(source) {
+        // 5.1 – COMPUTE NEW TREE LAYOUT
+        const treeLayoutData = treemap(root); // Renamed local var to avoid confusion with global treeData
+
+        // 5.2 – GET NODES & LINKS
+        const nodes = treeLayoutData.descendants();
+        const links = treeLayoutData.descendants().slice(1);
+
+        // 5.3 – NORMALIZE FOR FIXED-DEPTH
+        nodes.forEach(d => { d.y = d.depth * 180; });
+
+        // --------------------
+        // 5.4 – NODES SECTION
+        // --------------------
+        const node = svg.selectAll("g.node")
+          .data(nodes, d => d.id || (d.id = ++i));
+
+        const nodeEnter = node.enter().append("g")
+          .attr("class", d => (d.children || d._children) ? "node node--decision" : "node node--leaf")
+          .attr("transform", _ => `translate(${source.y0},${source.x0})`)
+          .on("click", click);
+
+        nodeEnter.append("rect")
+          .attr("width", d => getTextWidth(d.data.name) + 20)
+          .attr("height", 30)
+          .attr("x", -10)
+          .attr("y", -15)
+          .attr("rx", 6)
+          .attr("ry", 6);
+
+        nodeEnter.append("text")
+          .attr("dy", 4) // Adjusted to match prompt's specific instruction
+          .attr("x", 0) 
+          .attr("text-anchor", "start")
+          .text(d => d.data.name);
+
+        const nodeUpdate = nodeEnter.merge(node);
+        nodeUpdate.transition()
+          .duration(300)
+          .attr("transform", d => `translate(${d.y},${d.x})`);
+
+        nodeUpdate.select("rect")
+          .attr("width", d => getTextWidth(d.data.name) + 20);
+        
+        nodeUpdate.attr("class", d => (d.children || d._children) ? "node node--decision" : "node node--leaf");
+
+        const nodeExit = node.exit().transition()
+          .duration(300)
+          .attr("transform", _ => `translate(${source.y},${source.x})`)
+          .remove();
+
+        nodeExit.select("rect").attr("width", 0).attr("height", 0);
+        nodeExit.select("text").style("fill-opacity", 1e-6);
+
+        // --------------------
+        // 5.5 – LINKS SECTION
+        // --------------------
+        const link = svg.selectAll("path.link")
+          .data(links, d => d.id);
+
+        const linkEnter = link.enter().insert("path", "g")
+          .attr("class", "link")
+          .attr("d", _ => {
+            const o = { x: source.x0, y: source.y0 };
+            return diagonal(o, o);
+          });
+
+        const linkUpdate = linkEnter.merge(link);
+        linkUpdate.transition()
+          .duration(300)
+          .attr("d", d => diagonal(d, d.parent));
+
+        link.exit().transition()
+          .duration(300)
+          .attr("d", _ => {
+            const o = { x: source.x, y: source.y };
+            return diagonal(o, o);
+          })
+          .remove();
+
+        // --------------------
+        // 5.6 – STORE OLD POSITIONS
+        // --------------------
+        nodes.forEach(d => {
+          d.x0 = d.x;
+          d.y0 = d.y;
+        });
+      }
+
+      function diagonal(s, d) {
+        if (!s || !d) return "";
+        return `M ${s.y} ${s.x}
+                C ${(s.y + d.y) / 2} ${s.x},
+                  ${(s.y + d.y) / 2} ${d.x},
+                  ${d.y} ${d.x}`;
+      }
+
+      function collapse(d) {
+        if (d.children) {
+          d._children = d.children;
+          d._children.forEach(collapse);
+          d.children = null;
+        }
+      }
+
+      function click(event, d) {
+        if (d.children) {
+          d._children = d.children;
+          d.children = null;
+        } else if (d._children) {
+          d.children = d._children;
+          d._children = null;
+        } else {
+          if (d.data.link) {
+            window.open(d.data.link, "_blank");
+          }
+          return; 
+        }
+        update(d);
+      }
+
+      function getTextWidth(text) {
+        const span = document.createElement("span");
+        span.style.visibility = "hidden";
+        span.style.position = "absolute";
+        span.style.whiteSpace = "nowrap";
+        span.style.font = "14px 'Open Sans', sans-serif";
+        span.textContent = text;
+        document.body.appendChild(span);
+        const width = span.offsetWidth;
+        document.body.removeChild(span);
+        return width;
+      }
+    });
+  </script>
+</body>
+</html>

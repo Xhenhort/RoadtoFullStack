@@ -1,0 +1,494 @@
+/* Universal styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+      --primary:   #006D77;   /* deep teal */
+      --accent:    #83C5BE;   /* bright teal */
+      --text:      #333333;   /* dark charcoal */
+      --bg-light:  #FAFAFA;   /* off-white */
+      --bg-alt:    #F5F5F5;   /* very light gray */
+      --full-width: 100%;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text);
+    }
+
+    main > *:not(.hero) {
+      flex: 1;
+      width: 100%;
+      margin: 0 auto;
+      max-width: 1100px;
+      padding: 20px 40px 20px 40px;
+    }
+
+/* Header */
+
+header {
+  background-color: var(--accent);
+  padding: 20px;
+  text-align: center;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.hamburger-menu {
+  display: block;
+  position: fixed;
+  background-color: var(--primary);
+  height: 100vh;
+  width: 100%;
+  max-width: 450px;
+  top: 0px;
+  right: -450px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: right 0.3s ease;
+}
+
+.hamburger-menu.active {
+  right: 0;
+}
+
+.ham-menu {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  z-index: 1000;
+}
+
+.ham-menu span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  margin: 6px auto;
+  transition: all 0.3s ease;
+}
+
+.hamburger-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.hamburger-links li {
+  list-style: none;
+}
+
+.hamburger-links a {
+  color: var(--bg-light);
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid transparent;
+  transition: 0.2s ease;
+}
+
+.hamburger-links a:hover {
+  padding-bottom: 5px;
+  border-bottom: 4px solid var(--bg-light);
+  translate: 0 2px;
+  transition: 0.2s ease;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  gap: 70px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid transparent;
+  transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+  padding-bottom: 5px;
+  border-bottom: 4px solid var(--bg-light);
+  translate: 0 2px;
+  transition: 0.2s ease;
+}
+
+/* Main Content */
+
+main h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+main p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Hero Section */
+
+.hero {
+  background-image: url('../images/background-hero5.png');
+  background-size: cover;
+  color: var(--bg-light);
+  padding: 40px 20px;
+  text-align: center;
+  width: 100%;
+  height: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 200px;
+}
+
+/* Upcoming Events Section */
+
+.events {
+  padding: 40px 20px;
+  text-align: center;;
+}
+
+.events h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+}
+
+.events-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.card {
+  background-color: var(--primary);
+  color: var(--bg-light);
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  height: 400px;
+  text-align: center;
+}
+
+.card img {
+  height: 174px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+ button {
+  background-color: var(--bg-light);
+  color: var(--primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+ button:hover {
+  background-color: var(--accent);
+  color: var(--bg-light);
+  transition: 0.3s ease;
+}
+
+button a {
+  text-decoration: none;
+  color: var(--primary);
+  transition: 0.3s ease;
+  font-weight: bold;
+}
+
+button a:hover {
+  border-bottom: 1px solid var(--bg-light);
+  padding-bottom: 2px;
+  color: var(--bg-light);
+  transition: 0.3s ease;
+  translate: 0 2px;
+}
+
+.view-all {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--bg-light);
+  background-color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.view-all:hover {
+  background-color: var(--accent);
+  color: var(--bg-light);
+  transition: 0.3s ease;
+}
+
+.view-all a {
+  color: var(--bg-light);
+  text-decoration: none;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: ease 0.3s;
+}
+
+.view-all:hover a {
+  color: var(--bg-light);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-bottom: 5px solid var(--bg-light); ;
+  translate: 0 0px;
+  transition: ease 0.3s;
+}
+
+.view-all:hover {
+  translate: 0 0px;
+  transition: ease 0.3s;
+}
+
+/* Achievements Section */
+
+main > .achievements {
+  margin-top: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.achievements h2 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.achievements p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.achievements-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.event-card {
+  background-color: var(--primary);
+  color: var(--bg-light);
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  height: 400px;
+  text-align: center;
+}
+
+.event-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+/* Resources Section */
+
+.resources {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--primary);
+  color: var(--bg-light);
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.resources h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+}
+
+.resources p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.resources button {
+  background-color: var(--bg-light);
+}
+
+.resources button a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+/* about section */
+
+main > .about {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--accent);
+  color: var(--bg-light);
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.about h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+}
+
+.about p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Memeber Section */
+
+main > .members {
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.members h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+}
+
+.members p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.member-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto;
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Join Us Section */
+
+main > .joining {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--primary);
+  color: var(--bg-light);
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+}
+
+.joining h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+}
+
+.joining p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .ham-menu {
+    display: block;
+  }
+
+  .hero {
+    height: 500px;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 100px;
+  }
+
+  .events-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    height: auto;
+  }
+
+  .achievements-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-card {
+    width: 90%;
+    height: auto;
+  }
+}
